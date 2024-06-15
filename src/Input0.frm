@@ -33,7 +33,7 @@ Begin VB.Form Input0
       Height          =   270
       Left            =   120
       TabIndex        =   1
-      Top             =   1560
+      Top             =   1440
       Width           =   5415
    End
    Begin VB.Label Label 
@@ -41,7 +41,7 @@ Begin VB.Form Input0
       Height          =   255
       Left            =   120
       TabIndex        =   0
-      Top             =   720
+      Top             =   600
       Width           =   2775
    End
 End

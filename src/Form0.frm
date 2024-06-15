@@ -3,12 +3,12 @@ Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Begin VB.Form Form0 
    Caption         =   "视频播放器"
-   ClientHeight    =   5340
+   ClientHeight    =   5295
    ClientLeft      =   225
    ClientTop       =   870
    ClientWidth     =   13440
    LinkTopic       =   "Form1"
-   ScaleHeight     =   5340
+   ScaleHeight     =   5295
    ScaleWidth      =   13440
    StartUpPosition =   3  '窗口缺省
    Begin MSComDlg.CommonDialog CommonDialog 
@@ -62,6 +62,10 @@ Begin VB.Form Form0
          Caption         =   "打开网络文件"
          Shortcut        =   ^W
       End
+      Begin VB.Menu TingZhi 
+         Caption         =   "停止"
+         Shortcut        =   ^T
+      End
       Begin VB.Menu Exit 
          Caption         =   "退出"
          Shortcut        =   ^E
@@ -82,10 +86,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Declare Function ShellAbout Lib "shell32.dll" Alias "ShellAboutA" (ByVal hwnd As Long, ByVal App As String, ByVal OtherStuff As String, ByVal Icon As Long) As Long
 
-Private Sub Form_Load()
-Form_Resize
-End Sub
-
 Private Sub Form_Resize()
 On Error Resume Next
 WindowsMediaPlayer.Height = Height - 892
@@ -103,11 +103,15 @@ Private Sub OpenWebFile_Click()
 Input0.Show vbModal
 End Sub
 
-Private Sub About_Click()
-ShellAbout Me.hwnd, App.ProductName, "一款简单又好用的视频播放器。" & vbNewLine & _
-"播放控件由Windows Media Player提供支持，很容易操作。", 0
+Private Sub TingZhi_Click()
+WindowsMediaPlayer.Close
 End Sub
 
 Private Sub Exit_Click()
 End
+End Sub
+
+Private Sub About_Click()
+ShellAbout Me.hwnd, App.ProductName, "一款简单又好用的视频播放器。" & vbNewLine & _
+"播放控件由Windows Media Player提供支持，很容易操作。", 0
 End Sub
