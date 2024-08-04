@@ -11,4 +11,4 @@
 - 停止
 - 退出
 
-### 播放控件由 Windows Media Player 提供支持，较为稳定且操作简单。
+### 播放控件由 Windows Media Player 提供支持，稳定且操作简单。
