@@ -85,27 +85,34 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Declare Sub ShellAbout Lib "shell32.dll" Alias "ShellAboutA" (ByVal hwnd As Long, ByVal Caption As String, ByVal OtherStuff As String, ByVal Icon As Long)
+
 Private Sub Form_Resize()
-On Error Resume Next
-MediaPlayer.Height = Me.ScaleHeight
-MediaPlayer.Width = Me.ScaleWidth
+    On Error Resume Next
+    MediaPlayer.Height = Me.ScaleHeight
+    MediaPlayer.Width = Me.ScaleWidth
 End Sub
 
 Private Sub OpenFile_Click()
-On Error GoTo Cancel
-CommonDialog.ShowOpen
-MediaPlayer.URL = CommonDialog.FileName
+    On Error GoTo Cancel
+    CommonDialog.ShowOpen
+    MediaPlayer.URL = CommonDialog.FileName
 Cancel:
 End Sub
 
 Private Sub Open_WebFile_Click()
-OpenWebFile.Show vbModal
+    OpenWebFile.Show vbModal
 End Sub
 
 Private Sub Stop_Click()
-MediaPlayer.Close
+    MediaPlayer.Close
 End Sub
 
 Private Sub Exit_Click()
-End
+    End
+End Sub
+
+Private Sub About_Click()
+    ShellAbout Me.hwnd, App.Title & " V" & App.Major & "." & App.Minor, "一款体积小但是非常好用的音视频播放器。" & vbNewLine & _
+"播放控件由 Windows Media Player 提供支持，稳定且操作简单。", Me.Icon
 End Sub
